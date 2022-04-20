@@ -3,27 +3,19 @@ public class Program
 {
     public static void Main(string[] args)
     {
+        List<string> studentName = new List<string>() { "Asia", "Austin", "Wendy" };
+        List<string> hometowns = new List<string>() { "Lincoln Park", "Akron", "Oxford" };
+        List<string> favoriteFoods = new List<string>() { "steak", "tacos", "Italian" };
+        List<string> favoriteAnimals = new List<string>() { "cat", "dogs", "anything but rats" };
+
         while (true)
         {
-            List<string> studentName = new List<string>() { "Asia", "Austin", "Wendy" };
-            List<string> hometowns = new List<string>() { "Lincoln Park", "Akron", "Oxford" };
-            List<string> favoriteFoods = new List<string>() { "steak", "tacos", "Italian" };
-            List<string> favoriteAnimals = new List<string>() { "cat", "dogs", "anything but rats" };
 
             int studentId;
 
-            // you can use ex homeTown.Add("persons home town here"); to add to a list
-            // you can use ex homeTown[2]"persons home town here"; to okverwrite index with a new value to a list
-            // ex string name = PartyAtendees[3]; Like an array this will return the value at index 3
 
             while (true)
             {
-
-                //   add another student.If they choose to add another student
-                //   get the name and each piece of info and add them to the end of the list
-                //   Validate input--don’t accept blanks for any of the questions.
-
-                //*************THIS IS FOR BUILD SPECIFICATIONS #3***************
 
                 Console.WriteLine("Would you like to see a list of all students in the class? Please enter y/n");
                 string studentList = Console.ReadLine().ToLower();
@@ -46,14 +38,14 @@ public class Program
 
 
                 Console.WriteLine();
-                Console.WriteLine("What student would you like to learn more about? Enter a number 1-3.");
+                Console.WriteLine($"What student would you like to learn more about? Enter a number between 1 and {studentName.Count} .");
                 try
                 {
                     int studentChoice = int.Parse(Console.ReadLine());
 
                     if (studentChoice <= 0 || studentChoice > studentName.Count + 1)
                     {
-                        Console.WriteLine("Sorry, that is not a valid.  Please choose a number 1-3.");
+                        Console.WriteLine($"Sorry, that is not a valid.  Please choose a number 1 - {studentName.Count}.");
                         Console.WriteLine();
                         continue;
                     }
@@ -102,32 +94,115 @@ public class Program
             }
             while (true)
             {
+                string newStudentsName;
+
                 Console.WriteLine("Would you like to add another student to the list? Please enter y/n");
                 string newInformation = Console.ReadLine().ToLower();
-                // List<string> first = new List<string> { "do", "rey", "me" };
-                //List<string> second = new List<string> { "fa", "so", "la", "te" };
-                //first.AddRange(second);
-                //foreach (var e in first)
-                //{
-                //    Console.WriteLine(e);
                 if (newInformation == "y")
                 {
                     Console.WriteLine("Awesome!");
-                    Console.WriteLine("What student would you like to add to your new list?");
-                    string newStudentsName = Console.ReadLine().ToLower();
-                    Console.WriteLine();
-                    Console.WriteLine($"You added {newStudentsName} to the list.");
-                    Console.WriteLine();
-                    studentName.Add(newStudentsName);
-                    foreach (var student in studentName)
+                    while (true)
                     {
-                        Console.WriteLine(student);
+
+                        Console.WriteLine("What student would you like to add to your new list?");
+                        newStudentsName = Console.ReadLine().ToLower();
+                        if (!string.IsNullOrEmpty(newStudentsName))
+                        {
+                            Console.WriteLine();
+                            Console.WriteLine($"You added {newStudentsName} to the list.");
+                            Console.WriteLine();
+                            studentName.Add(newStudentsName);
+                            foreach (var student in studentName)
+                            {
+                                Console.WriteLine(student);
+                            }
+                            break;
+                        }
+                        else
+                        {
+                            Console.WriteLine("I am sorry I didnt get a vaild response");
+                            continue;
+                        }
                     }
+                    while (true)
+                    {
+                        Console.WriteLine($"What is {newStudentsName} hometown?");
+                        string newStudentsHomeTown = Console.ReadLine().ToLower();
+                        if (!string.IsNullOrEmpty(newStudentsHomeTown))
+                        {
+                            Console.WriteLine();
+                            Console.WriteLine($"{newStudentsName} home town is {newStudentsHomeTown}.");
+                            Console.WriteLine($"{newStudentsName} home town has been added to the list.");
+                            Console.WriteLine();
+                            hometowns.Add(newStudentsHomeTown);
+                            foreach (var town in hometowns)
+                            {
+                                Console.WriteLine(town);
+                            }
+                            break;
+                        }
+                        else
+                        {
+                            Console.WriteLine("I am sorry I didnt get a vaild response");
+                            continue;
+                        }
+                    }
+
+                    Console.WriteLine();
+
+                    while (true)
+                    {
+
+                        Console.WriteLine($"What is {newStudentsName} favorite Food?");
+                        string newStudentsFavoriteFood = Console.ReadLine().ToLower();
+                        Console.WriteLine();
+                        if (!string.IsNullOrEmpty(newStudentsFavoriteFood))
+                        {
+                            Console.WriteLine($"{newStudentsName} favorite Food is {newStudentsFavoriteFood}.");
+                            Console.WriteLine($"{newStudentsName} favorite Food been added to the list.");
+                            Console.WriteLine();
+                            favoriteFoods.Add(newStudentsFavoriteFood);
+                            foreach (var food in favoriteFoods)
+                            {
+                                Console.WriteLine(food);
+                            }
+                            break;
+                        }
+                        else
+                        {
+                            Console.WriteLine("I am sorry I didnt get a vaild response");
+                            continue;
+                        }
+
+                        Console.WriteLine();
+                        Console.WriteLine($"What is {newStudentsName} favorite animal?");
+                        string newSudentsFavoriteAnimal = Console.ReadLine().ToLower();
+
+                        if (!string.IsNullOrEmpty(newSudentsFavoriteAnimal))
+                        {
+                            Console.WriteLine();
+                            Console.WriteLine($"{newStudentsName} favorite animal is {newSudentsFavoriteAnimal}.");
+                            Console.WriteLine($"{newStudentsName} favorite animal has been added to the list.");
+                            Console.WriteLine();
+                            favoriteAnimals.Add(newSudentsFavoriteAnimal);
+                            foreach (var animal in favoriteAnimals)
+                            {
+                                Console.WriteLine(animal);
+                            }
+                            break;
+                        }
+                        else
+                        {
+                            Console.WriteLine("I am sorry I didnt get a vaild response");
+                            continue;
+                        }
+                    }
+
                     break;
                 }
                 else if (newInformation == "n")
                 {
-                    Console.WriteLine("Thats okay, we already have some list to work with!");
+                    Console.WriteLine("Thats okay, we already have a list or two to work with!");
                     break;
                 }
                 else
@@ -158,10 +233,3 @@ public class Program
     }
 }
 
-
-
-
-//****************Extra Challenges:***********************
-//Create the original lists in alphabetical order by student name.
-//When a user adds a new student, insert them at the correct location alphabetically.
-//Remember to put the information about a particular student at the same index in each list!
